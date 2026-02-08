@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming Products | Perfectly Content</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        Perfectly Content
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="catalog.html" class="nav__link nav__link--active">Products</a></li>
+        <li><a href="index.html#what-we-do" class="nav__link">What We Do</a></li>
+        <li><a href="index.html#contact" class="nav__link">Contact</a></li>
+        <li><a href="index.html#contact" class="nav__cta">Talk to us</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header with Breadcrumb -->
+  <div class="page-header fade-up">
+    <div class="page-header__inner">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="catalog.html">Products</a>
+        <span>/</span>
+        <span>Gaming</span>
+      </div>
+      <div class="page-header__content">
+        <div class="page-header__icon">
+          <svg viewBox="0 0 24 24" width="48" height="48">
+            <path d="M6 6h12v12H6z" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="9" cy="9" r="1" fill="currentColor"/>
+            <circle cx="15" cy="9" r="1" fill="currentColor"/>
+            <path d="M9 13c2 0 4 1 4 1s2-1 4-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h1>Gaming Products</h1>
+        <p>Engage users with interactive gaming experiences, strategy tools, and gamified learning</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Info Bar -->
+  <div class="category-info">
+    <div class="category-info__inner">
+      <span class="category-info__count">7 products</span>
+    </div>
+  </div>
+
+  <!-- Product Grid -->
+  <section class="product-grid">
+    <div class="product-grid__inner">
+      <!-- Product 1: Gaming Assistant -->
+      <div class="product-tile fade-up">
+        <div class="product-tile__icon">
+          <svg viewBox="0 0 24 24" width="40" height="40">
+            <path d="M3 3h18v18H3z" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 9l6 6M15 9l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Gaming Assistant</h4>
+        <p>Strategy tips, walkthroughs, and gaming advice to help players master their favorite games</p>
+      </div>
+
+      <!-- Product 2: Trivia -->
+      <div class="product-tile fade-up">
+        <div class="product-tile__icon">
+          <svg viewBox="0 0 24 24" width="40" height="40">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Trivia</h4>
+        <p>Interactive trivia games across topics with high engagement format to keep players entertained</p>
+      </div>
+
+      <!-- Product 3: Social Game -->
+      <div class="product-tile fade-up">
+        <div class="product-tile__icon">
+          <svg viewBox="0 0 24 24" width="40" height="40">
+            <circle cx="8" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="16" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 13c-2.5 2-2.5 4-2.5 4v2h13v-2c0 0 0-2-2.5-4" fill="none" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h4>Social Game</h4>
+        <p>Multiplayer social gaming experiences designed for groups to play together and connect</p>
+      </div>
+
+      <!-- Product 4: Study Buddy -->
+      <div class="product-tile fade-up">
+        <div class="product-tile__icon">
+          <svg viewBox="0 0 24 24" width="40" height="40">
+            <path d="M4 5h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M6 7v8M10 7v8M14 7v8M18 7v8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M2 19h20" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h4>Study Buddy</h4>
+        <p>Gamified learning with quizzes and challenges to make education fun and engaging</p>
+      </div>
+
+      <!-- Product 5: Sports Prediction -->
+      <div class="product-tile fade-up">
+        <div class="product-tile__icon">
+          <svg viewBox="0 0 24 24" width="40" height="40">
+            <path d="M3 13l3-3m0 0l10-10m-10 10v4a1 1 0 001 1h4m-4-4l10-10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="18" cy="6" r="2" fill="currentColor"/>
+          </svg>
+        </div>
+        <h4>Sports Prediction</h4>
+        <p>AI-powered sports predictions and analysis to provide insights for informed decisions</p>
+      </div>
+
+      <!-- Product 6: Poker Coach -->
+      <div class="product-tile fade-up">
+        <div class="product-tile__icon">
+          <svg viewBox="0 0 24 24" width="40" height="40">
+            <path d="M6 6h2v12H6zM10 6h2v12h-2zM14 6h2v12h-2zM18 6h2v12h-2z" fill="currentColor" opacity="0.3"/>
+            <path d="M4 8h16M4 14h16M4 18h16" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="11" r="1.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <h4>Poker Coach</h4>
+        <p>Strategy and odds coaching for poker players to improve their game and win more</p>
+      </div>
+
+      <!-- Product 7: Avatar Maker -->
+      <div class="product-tile fade-up">
+        <div class="product-tile__icon">
+          <svg viewBox="0 0 24 24" width="40" height="40">
+            <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M5 20c0-4 3-7 7-7s7 3 7 7" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M15 6l2-2m2 2l-2-2M9 6l-2-2m2 2L9 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Avatar Maker</h4>
+        <p>Custom avatar creation and personalization tools for players to express themselves uniquely</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner fade-up">
+    <div class="cta-banner__inner">
+      <h2>Want a custom gaming product?</h2>
+      <p>We can create tailored gaming experiences designed specifically for your audience</p>
+      <a href="index.html#contact" class="cta-banner__button">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <div class="footer__brand-name">
+          <div class="nav__logo-icon">
+            <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:white"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          Perfectly Content
+        </div>
+        <p>AI-powered content infrastructure for high-volume, regulated, revenue-critical environments.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="catalog.html">All Products</a></li>
+          <li><a href="guides.html">Guides</a></li>
+          <li><a href="gaming.html">Gaming</a></li>
+          <li><a href="lifestyle.html">Lifestyle</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>More</h4>
+        <ul>
+          <li><a href="social.html">Social</a></li>
+          <li><a href="wellness.html">Wellness</a></li>
+          <li><a href="life-hacks.html">Life Hacks</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#what-we-do">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Perfectly Content. All rights reserved.</p>
+      <div class="footer__bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

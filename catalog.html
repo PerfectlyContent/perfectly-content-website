@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Catalog — Perfectly Content</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ─── Catalog-specific overrides ─── */
+    body.catalog-page {
+      background: #F5F5F7;
+      color: #1d1d1f;
+    }
+
+    /* Light nav for catalog */
+    .catalog-page .nav {
+      background: rgba(245, 245, 247, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .catalog-page .nav__logo { color: #1d1d1f; }
+    .catalog-page .nav__link { color: #6e6e73; }
+    .catalog-page .nav__link:hover,
+    .catalog-page .nav__link--active { color: #1d1d1f; }
+
+    /* Catalog header */
+    .catalog-header {
+      text-align: center;
+      padding: 120px 24px 24px;
+    }
+    .catalog-header h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      color: #1d1d1f;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .catalog-header p {
+      font-size: 1.15rem;
+      color: #6e6e73;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ─── Scrolling rows ─── */
+    .scroll-gallery {
+      overflow: hidden;
+      padding: 16px 0 80px;
+    }
+    .scroll-row {
+      display: flex;
+      gap: 10px;
+      padding: 5px 0;
+      margin-bottom: 10px;
+      will-change: transform;
+      width: max-content;
+      cursor: grab;
+      user-select: none;
+    }
+    .scroll-row:active {
+      cursor: grabbing;
+    }
+
+    /* ─── Cards ─── */
+    .scard {
+      flex-shrink: 0;
+      width: 330px;
+      height: 195px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-color: #e8e8ed;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .scard:hover {
+      transform: scale(1.04);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    .scard__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 45%, transparent 100%);
+    }
+    .scard__text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 14px 16px;
+    }
+    .scard__text h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 2px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+    .scard__text p {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.85);
+      margin: 0;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Category labels between rows */
+    .row-label {
+      padding: 30px 40px 10px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1d1d1f;
+    }
+    .row-label span {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #6e6e73;
+      margin-left: 8px;
+    }
+
+    /* Light footer for catalog */
+    .catalog-page .footer {
+      background: #F5F5F7;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    .catalog-page .footer__brand-name,
+    .catalog-page .footer__col h4 { color: #1d1d1f; }
+    .catalog-page .footer p,
+    .catalog-page .footer a { color: #6e6e73; }
+    .catalog-page .footer a:hover { color: #1d1d1f; }
+    .catalog-page .footer__bottom { border-color: rgba(0,0,0,0.08); }
+    .catalog-page .footer__bottom p { color: #86868b; }
+
+    /* CTA on light bg */
+    .catalog-page .cta-banner {
+      background: linear-gradient(135deg, #1d1d1f 0%, #2d2d3f 100%);
+    }
+  </style>
+</head>
+<body class="catalog-page">
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        Perfectly Content
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="catalog.html" class="nav__link nav__link--active">Products</a></li>
+        <li><a href="index.html#what-we-do" class="nav__link">What We Do</a></li>
+        <li><a href="index.html#contact" class="nav__link">Contact</a></li>
+        <li><a href="index.html#contact" class="nav__cta">Talk to us</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <div class="catalog-header">
+    <h1>Content products,<br>ready to deploy.</h1>
+    <p>AI-powered content designed for carrier billing, aggregation, and high-volume distribution.</p>
+  </div>
+
+  <!-- Scrolling Gallery -->
+  <div class="scroll-gallery">
+
+    <div class="row-label">Guides <span>7 products</span></div>
+    <div class="scroll-row" data-direction="left" data-speed="0.3">
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Beauty Betty</h4><p>Personalized skincare, makeup, and beauty tips</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Calm Coach</h4><p>Guided relaxation and stress management</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>DIY</h4><p>Step-by-step project guides for home improvement</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Study Buddy</h4><p>Interactive learning with quizzes and flashcards</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Gaming Assistant</h4><p>Strategy tips, walkthroughs, and recommendations</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Horoscope Advisor</h4><p>Daily personalized horoscope and astrology insights</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1536640712-4d4c36ff0e4e?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Parenting</h4><p>Age-appropriate parenting advice for families</p></div></div>
+    </div>
+
+    <div class="row-label">Gaming <span>7 products</span></div>
+    <div class="scroll-row" data-direction="right" data-speed="0.25">
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Gaming Assistant</h4><p>Strategy tips and gaming advice for every level</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Trivia</h4><p>Interactive trivia games across topics</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Social Game</h4><p>Multiplayer social gaming for groups and parties</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Study Buddy</h4><p>Gamified learning with quizzes and rewards</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Sports Prediction</h4><p>AI-powered sports predictions and analysis</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Poker Coach</h4><p>Strategy and odds coaching for poker players</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Avatar Maker</h4><p>Custom avatar creation and personalization</p></div></div>
+    </div>
+
+    <div class="row-label">Lifestyle <span>8 products</span></div>
+    <div class="scroll-row" data-direction="left" data-speed="0.35">
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Beauty Betty</h4><p>AI beauty advisor for skincare and personal care</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Calm Coach</h4><p>Guided relaxation and stress management</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Horoscope Advisor</h4><p>Daily personalized horoscope and astrology</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Travel Guide</h4><p>AI-powered travel recommendations and planning</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Congratulations Generator</h4><p>Personalized greeting messages for special occasions</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Recipes & Cooking</h4><p>Step-by-step recipes and cooking guidance</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Never Forget</h4><p>Smart reminder system for important dates</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Books Recommendations</h4><p>Personalized book suggestions for you</p></div></div>
+    </div>
+
+    <div class="row-label">Social <span>6 products</span></div>
+    <div class="scroll-row" data-direction="right" data-speed="0.3">
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Social Game</h4><p>Multiplayer social gaming for groups</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Trivia</h4><p>Interactive trivia challenges for groups</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Kids Activities</h4><p>Safe, engaging games designed for children</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Who</h4><p>Identity-based party games and icebreakers</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Never Have I Ever</h4><p>Classic party game with AI-generated prompts</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Never Forget</h4><p>Social memory tool for moments with friends</p></div></div>
+    </div>
+
+    <div class="row-label">Wellness <span>6 products</span></div>
+    <div class="scroll-row" data-direction="left" data-speed="0.28">
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Nutrition</h4><p>Personalized nutrition planning and guidance</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Calm Coach</h4><p>Guided relaxation and breathing exercises</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Sport Guide</h4><p>Fitness routines and workout planning</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Meditation</h4><p>Guided meditation and mindfulness practices</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1515894203077-5e4b60e90fb2?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Sleep Coach</h4><p>Sleep optimization and bedtime routines</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Protein Tracker</h4><p>Daily protein intake tracking and meal plans</p></div></div>
+    </div>
+
+    <div class="row-label">Life Hacks <span>6 products</span></div>
+    <div class="scroll-row" data-direction="right" data-speed="0.32">
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Reminder / For Later</h4><p>Smart reminder system for important items</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Protein Tracker</h4><p>Daily protein intake and nutrition planning</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>DIY</h4><p>Home improvement and creative project guides</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Day Planner</h4><p>AI-powered daily planning and optimization</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Books Recommendations</h4><p>Personalized book discovery for you</p></div></div>
+      <div class="scard" style="background-image:url('https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&h=600&fit=crop&crop=center&q=80')"><div class="scard__overlay"></div><div class="scard__text"><h4>Music Playlist Builder</h4><p>Custom playlists based on mood and taste</p></div></div>
+    </div>
+
+  </div>
+
+  <!-- CTA Banner -->
+  <section class="section" id="contact">
+    <div class="cta-banner fade-up">
+      <div class="cta-banner__content">
+        <h2>Need a custom product?</h2>
+        <p>We build bespoke content products for specific distribution environments. Let's talk about what you need.</p>
+        <a href="mailto:hello@perfectlycontent.com" class="btn btn--primary btn--arrow">Talk to us </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <div class="footer__brand-name">
+          <div class="nav__logo-icon">
+            <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          Perfectly Content
+        </div>
+        <p>AI-powered content infrastructure for high-volume, regulated, revenue-critical environments.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="catalog.html">All Products</a></li>
+          <li><a href="guides.html">Guides</a></li>
+          <li><a href="gaming.html">Gaming</a></li>
+          <li><a href="lifestyle.html">Lifestyle</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>More</h4>
+        <ul>
+          <li><a href="social.html">Social</a></li>
+          <li><a href="wellness.html">Wellness</a></li>
+          <li><a href="life-hacks.html">Life Hacks</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#what-we-do">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Perfectly Content. All rights reserved.</p>
+      <div class="footer__bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // ─── Infinite Carousel ───
+    document.querySelectorAll('.scroll-row').forEach((row) => {
+      const originalHTML = row.innerHTML;
+      row.innerHTML = originalHTML + originalHTML + originalHTML;
+
+      const isLeft = row.dataset.direction === 'left';
+      const speedMultiplier = parseFloat(row.dataset.speed) || 0.3;
+      const autoSpeed = speedMultiplier * 0.6; // gentle px per frame
+
+      const setWidth = row.scrollWidth / 3;
+      let offset = -setWidth;
+      let isHovered = false;
+      let isDragging = false;
+      let dragStartX = 0;
+      let dragPrevX = 0;
+      let dragStartOffset = 0;
+      let velocity = 0;
+
+      function wrapOffset() {
+        while (offset > 0) offset -= setWidth;
+        while (offset < -setWidth * 2) offset += setWidth;
+      }
+
+      function animate() {
+        // Auto-scroll (slow, gentle) when not interacting
+        if (!isHovered && !isDragging) {
+          offset += isLeft ? -autoSpeed : autoSpeed;
+        }
+
+        // Decay any remaining velocity from drag/swipe
+        if (!isDragging && Math.abs(velocity) > 0.2) {
+          offset += velocity;
+          velocity *= 0.92;
+        } else if (!isDragging) {
+          velocity = 0;
+        }
+
+        wrapOffset();
+        row.style.transform = `translateX(${offset}px)`;
+        requestAnimationFrame(animate);
+      }
+
+      // Hover: pause auto-scroll
+      row.addEventListener('mouseenter', () => { isHovered = true; });
+      row.addEventListener('mouseleave', () => {
+        isHovered = false;
+        if (isDragging) isDragging = false;
+      });
+
+      // Horizontal trackpad/wheel only — vertical scroll passes through to page
+      row.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY) * 0.5) {
+          e.preventDefault();
+          offset -= e.deltaX * 0.5;
+        }
+        // vertical scroll (deltaY) is NOT captured — page scrolls normally
+      }, { passive: false });
+
+      // Click & drag
+      row.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        dragStartX = e.clientX;
+        dragPrevX = e.clientX;
+        dragStartOffset = offset;
+        velocity = 0;
+        e.preventDefault();
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        offset = dragStartOffset + (e.clientX - dragStartX);
+        velocity = (e.clientX - dragPrevX) * 0.15;
+        dragPrevX = e.clientX;
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+      });
+
+      // Touch
+      let touchStartX = 0, touchPrevX = 0, touchStartOffset = 0;
+
+      row.addEventListener('touchstart', (e) => {
+        isHovered = true;
+        touchStartX = touchPrevX = e.touches[0].clientX;
+        touchStartOffset = offset;
+        velocity = 0;
+      }, { passive: true });
+
+      row.addEventListener('touchmove', (e) => {
+        const x = e.touches[0].clientX;
+        offset = touchStartOffset + (x - touchStartX);
+        velocity = (x - touchPrevX) * 0.15;
+        touchPrevX = x;
+      }, { passive: true });
+
+      row.addEventListener('touchend', () => { isHovered = false; });
+
+      requestAnimationFrame(animate);
+    });
+  </script>
+</body>
+</html>
