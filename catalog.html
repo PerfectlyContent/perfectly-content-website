@@ -109,6 +109,44 @@
       text-overflow: ellipsis;
     }
 
+    /* ─── Featured glow cards ─── */
+    .scard--featured {
+      box-shadow: 0 0 12px rgba(124, 106, 255, 0.4), 0 0 24px rgba(124, 106, 255, 0.15);
+      border: 1.5px solid rgba(124, 106, 255, 0.5);
+    }
+    .scard--featured:hover {
+      box-shadow: 0 0 20px rgba(124, 106, 255, 0.6), 0 0 40px rgba(124, 106, 255, 0.2);
+    }
+    .scard__try {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(124, 106, 255, 0.35);
+      backdrop-filter: blur(2px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+      text-decoration: none;
+    }
+    .scard--featured:hover .scard__try {
+      opacity: 1;
+    }
+    .scard__try span {
+      background: #fff;
+      color: #5b47ff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 10px 24px;
+      border-radius: 50px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+    .scard__try:hover span {
+      transform: scale(1.06);
+    }
+
     /* Category labels between rows */
     .row-label {
       padding: 30px 40px 10px;
@@ -180,26 +218,26 @@
       <div class="scard" style="background-image:url('images/gaming-assistant.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Gaming Assistant</h4><p>Level up faster with AI-powered walkthroughs and strategy</p></div></div>
       <div class="scard" style="background-image:url('images/social-game-v2.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Social Game</h4><p>Turn any hangout into an unforgettable game night</p></div></div>
       <div class="scard" style="background-image:url('images/sports-prediction.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Sports Prediction</h4><p>AI-driven match predictions and real-time analysis</p></div></div>
-      <div class="scard" style="background-image:url('images/trivia-v2.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Trivia</h4><p>Thousands of questions across every topic imaginable</p></div></div>
+      <div class="scard scard--featured" style="background-image:url('images/trivia-v2.png')"><a class="scard__try" href="https://www.triviall.fun" target="_blank"><span>Try now</span></a><div class="scard__overlay"></div><div class="scard__text"><h4>Trivia</h4><p>Thousands of questions across every topic imaginable</p></div></div>
       <div class="scard" style="background-image:url('images/poker-coach.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Poker Coach</h4><p>Read the table, calculate odds, and play smarter</p></div></div>
       <div class="scard" style="background-image:url('images/never-have-i-ever.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Never Have I Ever</h4><p>AI-generated prompts that keep the party going all night</p></div></div>
       <div class="scard" style="background-image:url('images/avatar-maker.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Avatar Maker</h4><p>Design unique 3D avatars that look just like you</p></div></div>
-      <div class="scard" style="background-image:url('images/gothere-v2.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>GoThere</h4><p>Conversation starters that spark real connections</p></div></div>
+      <div class="scard scard--featured" style="background-image:url('images/gothere-v2.png')"><a class="scard__try" href="https://www.gothere.fun" target="_blank"><span>Try now</span></a><div class="scard__overlay"></div><div class="scard__text"><h4>GoThere</h4><p>Conversation starters that spark real connections</p></div></div>
       <div class="scard" style="background-image:url('images/study-buddy.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Study Buddy</h4><p>Gamified quizzes and flashcards that make learning fun</p></div></div>
     </div>
 
     <div class="row-label">Lifestyle <span>11 products</span></div>
     <div class="scroll-row" data-direction="right" data-speed="0.35">
-      <div class="scard" style="background-image:url('images/beauty-betty.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Beauty Betty</h4><p>Your personal AI beauty advisor for skin, hair, and style</p></div></div>
+      <div class="scard scard--featured" style="background-image:url('images/beauty-betty.png')"><a class="scard__try" href="https://betty.aiheros.com?demo=true" target="_blank"><span>Try now</span></a><div class="scard__overlay"></div><div class="scard__text"><h4>Beauty Betty</h4><p>Your personal AI beauty advisor for skin, hair, and style</p></div></div>
       <div class="scard" style="background-image:url('images/horoscope.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Horoscope Advisor</h4><p>Daily cosmic insights tailored to your birth chart</p></div></div>
       <div class="scard" style="background-image:url('images/travel-planner.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Travel Guide</h4><p>Discover hidden gems and plan your perfect trip</p></div></div>
       <div class="scard" style="background-image:url('images/gift-finder.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Congratulations Generator</h4><p>Beautiful messages for birthdays, weddings, and milestones</p></div></div>
       <div class="scard" style="background-image:url('images/recipe-remix.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Recipes & Cooking</h4><p>Chef-quality recipes with step-by-step video-style guidance</p></div></div>
       <div class="scard" style="background-image:url('images/never-forget.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Never Forget</h4><p>Never miss an anniversary, birthday, or important date again</p></div></div>
       <div class="scard" style="background-image:url('images/books-recommendations.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Books Recommendations</h4><p>Your next favorite read, picked by AI that knows your taste</p></div></div>
-      <div class="scard" style="background-image:url('images/wallpaper-studio.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Wallpaper Studio</h4><p>Stunning phone wallpapers generated just for you</p></div></div>
+      <div class="scard scard--featured" style="background-image:url('images/wallpaper-studio.png')"><a class="scard__try" href="https://www.wpstudio.fun" target="_blank"><span>Try now</span></a><div class="scard__overlay"></div><div class="scard__text"><h4>Wallpaper Studio</h4><p>Stunning phone wallpapers generated just for you</p></div></div>
       <div class="scard" style="background-image:url('images/card-maker.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Card Maker</h4><p>Design and share beautiful greeting cards on WhatsApp</p></div></div>
-      <div class="scard" style="background-image:url('images/gothere-v2.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>GoThere</h4><p>Break the ice and start conversations that matter</p></div></div>
+      <div class="scard scard--featured" style="background-image:url('images/gothere-v2.png')"><a class="scard__try" href="https://www.gothere.fun" target="_blank"><span>Try now</span></a><div class="scard__overlay"></div><div class="scard__text"><h4>GoThere</h4><p>Break the ice and start conversations that matter</p></div></div>
       <div class="scard" style="background-image:url('images/playlist-generator.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Music Playlist Builder</h4><p>AI-curated playlists that match your mood perfectly</p></div></div>
     </div>
 
@@ -208,7 +246,7 @@
       <div class="scard" style="background-image:url('images/kids-crafts.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Kids Activities</h4><p>Safe, screen-free fun that keeps kids entertained for hours</p></div></div>
       <div class="scard" style="background-image:url('images/social-game-v2.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Who</h4><p>Guess the identity — the party game everyone's talking about</p></div></div>
       <div class="scard" style="background-image:url('images/never-have-i-ever.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Never Have I Ever</h4><p>AI-generated prompts that keep the party going all night</p></div></div>
-      <div class="scard" style="background-image:url('images/trivia-v2.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Trivia</h4><p>Challenge your friends to the ultimate knowledge showdown</p></div></div>
+      <div class="scard scard--featured" style="background-image:url('images/trivia-v2.png')"><a class="scard__try" href="https://www.triviall.fun" target="_blank"><span>Try now</span></a><div class="scard__overlay"></div><div class="scard__text"><h4>Trivia</h4><p>Challenge your friends to the ultimate knowledge showdown</p></div></div>
       <div class="scard" style="background-image:url('images/never-forget.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Never Forget</h4><p>Save and relive the best moments with your people</p></div></div>
       <div class="scard" style="background-image:url('images/card-maker.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Card Maker</h4><p>Create and share personalized cards in seconds</p></div></div>
     </div>
@@ -236,7 +274,7 @@
 
     <div class="row-label">Interactive Guides <span>7 products</span></div>
     <div class="scroll-row" data-direction="right" data-speed="0.25">
-      <div class="scard" style="background-image:url('images/beauty-betty.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Beauty Betty</h4><p>Step-by-step routines for glowing skin and confident style</p></div></div>
+      <div class="scard scard--featured" style="background-image:url('images/beauty-betty.png')"><a class="scard__try" href="https://betty.aiheros.com?demo=true" target="_blank"><span>Try now</span></a><div class="scard__overlay"></div><div class="scard__text"><h4>Beauty Betty</h4><p>Step-by-step routines for glowing skin and confident style</p></div></div>
       <div class="scard" style="background-image:url('images/calm-coach.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Calm Coach</h4><p>Your pocket guide to stress relief and daily calm</p></div></div>
       <div class="scard" style="background-image:url('images/diy-helper.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>DIY</h4><p>From birdhouses to bookshelves — guided projects for all levels</p></div></div>
       <div class="scard" style="background-image:url('images/study-buddy.png')"><div class="scard__overlay"></div><div class="scard__text"><h4>Study Buddy</h4><p>Learn anything faster with AI-powered study sessions</p></div></div>
