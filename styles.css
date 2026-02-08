@@ -353,7 +353,6 @@ p {
   padding: 180px 24px 60px;
   position: relative;
   z-index: 1;
-  overflow: hidden;
 }
 
 /* Shooting stars — faithful to SCSS reference */
